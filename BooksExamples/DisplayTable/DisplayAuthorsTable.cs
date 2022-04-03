@@ -57,5 +57,17 @@ namespace DisplayTable
                 MessageBox.Show("FirstName and LastName must contain values", "Entity Validation Exception");
             }
         }
+
+        // displays only rows that have the specified last name
+        private void findButton_Click_1(object sender, EventArgs e)
+        {
+            dbcontext.Authors
+                .Where(author => (author.LastName == textBox1.Text))
+                .OrderBy(author => author.LastName)
+                .ThenBy(author => author.FirstName)
+                .Load();
+            //specify datasource for authorBindingSource
+            authorBindingSource.DataSource = dbcontext.Authors.Local;
+        }
     }
 }
