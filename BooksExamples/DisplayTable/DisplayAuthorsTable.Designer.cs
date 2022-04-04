@@ -45,18 +45,20 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.authorBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.authorDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.findButton = new System.Windows.Forms.Button();
+            this.authorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titlesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.LastName = new System.Windows.Forms.Label();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.NameInput = new System.Windows.Forms.TextBox();
+            this.Reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingNavigator)).BeginInit();
             this.authorBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorDataGridView)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.titlesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // authorBindingNavigator
@@ -85,8 +87,9 @@
             this.authorBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.authorBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.authorBindingNavigator.Name = "authorBindingNavigator";
+            this.authorBindingNavigator.Padding = new System.Windows.Forms.Padding(0);
             this.authorBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.authorBindingNavigator.Size = new System.Drawing.Size(747, 43);
+            this.authorBindingNavigator.Size = new System.Drawing.Size(539, 43);
             this.authorBindingNavigator.TabIndex = 0;
             this.authorBindingNavigator.Text = "bindingNavigator1";
             this.authorBindingNavigator.RefreshItems += new System.EventHandler(this.authorBindingNavigator_RefreshItems);
@@ -148,7 +151,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(30, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(31, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -194,87 +197,95 @@
             this.authorDataGridView.AutoGenerateColumns = false;
             this.authorDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.authorDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.authorIDDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn});
             this.authorDataGridView.DataSource = this.authorBindingSource;
-            this.authorDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.authorDataGridView.Location = new System.Drawing.Point(0, 43);
-            this.authorDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.authorDataGridView.Location = new System.Drawing.Point(10, 60);
+            this.authorDataGridView.Margin = new System.Windows.Forms.Padding(1);
             this.authorDataGridView.Name = "authorDataGridView";
             this.authorDataGridView.RowTemplate.Height = 37;
-            this.authorDataGridView.Size = new System.Drawing.Size(747, 434);
+            this.authorDataGridView.Size = new System.Drawing.Size(529, 427);
             this.authorDataGridView.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn1
+            // authorIDDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "AuthorID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "AuthorID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 92;
+            this.authorIDDataGridViewTextBoxColumn.DataPropertyName = "AuthorID";
+            this.authorIDDataGridViewTextBoxColumn.HeaderText = "AuthorID";
+            this.authorIDDataGridViewTextBoxColumn.Name = "authorIDDataGridViewTextBoxColumn";
             // 
-            // dataGridViewTextBoxColumn2
+            // firstNameDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "FirstName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 101;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             // 
-            // dataGridViewTextBoxColumn3
+            // lastNameDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "LastName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 101;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             // 
-            // panel1
+            // titlesBindingSource
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.findButton);
-            this.panel1.Location = new System.Drawing.Point(0, 366);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(772, 111);
-            this.panel1.TabIndex = 2;
+            this.titlesBindingSource.DataMember = "Titles";
+            this.titlesBindingSource.DataSource = this.authorBindingSource;
             // 
-            // textBox1
+            // directorySearcher1
             // 
-            this.textBox1.Location = new System.Drawing.Point(169, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 22);
-            this.textBox1.TabIndex = 2;
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
-            // label1
+            // LastName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search Authors by Last Name\r\n";
+            this.LastName.AutoSize = true;
+            this.LastName.Location = new System.Drawing.Point(44, 524);
+            this.LastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LastName.Name = "LastName";
+            this.LastName.Size = new System.Drawing.Size(146, 17);
+            this.LastName.TabIndex = 3;
+            this.LastName.Text = "Input Last Name Here";
             // 
-            // findButton
+            // SearchButton
             // 
-            this.findButton.Location = new System.Drawing.Point(408, 36);
-            this.findButton.Name = "findButton";
-            this.findButton.Size = new System.Drawing.Size(127, 31);
-            this.findButton.TabIndex = 0;
-            this.findButton.Text = "Find";
-            this.findButton.UseVisualStyleBackColor = true;
-            this.findButton.Click += new System.EventHandler(this.findButton_Click_1);
+            this.SearchButton.Location = new System.Drawing.Point(342, 524);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 7;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // NameInput
+            // 
+            this.NameInput.Location = new System.Drawing.Point(197, 524);
+            this.NameInput.Name = "NameInput";
+            this.NameInput.Size = new System.Drawing.Size(132, 22);
+            this.NameInput.TabIndex = 8;
+            // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(222, 558);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(75, 23);
+            this.Reset.TabIndex = 9;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // DisplayAuthorsTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 477);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(539, 593);
+            this.Controls.Add(this.Reset);
+            this.Controls.Add(this.NameInput);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.LastName);
             this.Controls.Add(this.authorDataGridView);
             this.Controls.Add(this.authorBindingNavigator);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "DisplayAuthorsTable";
             this.Text = "Display Authors Table";
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingNavigator)).EndInit();
@@ -282,8 +293,7 @@
             this.authorBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorDataGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.titlesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,13 +316,15 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton authorBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView authorDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button findButton;
+        private System.Windows.Forms.BindingSource titlesBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.Windows.Forms.Label LastName;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.TextBox NameInput;
+        private System.Windows.Forms.Button Reset;
     }
 }
 

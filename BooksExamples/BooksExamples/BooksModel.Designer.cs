@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\nlips\Desktop\cis297-w2022-assignment5-template\BooksExamples\BooksExamples\BooksModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\nlips\Documents\GitHub\cis297-w2022-assignment5-template-Skrublord\BooksExamples\BooksExamples\BooksModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

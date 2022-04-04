@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace BooksExamples
 {
+    /// <summary>
+    /// Program housing
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// hello world
+        /// </summary>
         static void Main()
         {
-            Console.WriteLine("Hello!");
+            Console.WriteLine("Nathan Lipski was Here!");
         }
     }
 }
